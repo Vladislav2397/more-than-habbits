@@ -1,12 +1,17 @@
 <template lang="pug">
 
 .b-home
-    .__container
-        h1 Home page
-        p {{ counter }}
-        button-component.__button(
+    .__header
+        h2.__title Tasks
+        button.__button(
             @click="onClick"
-        ) button
+        ) Add
+    .__container.container
+        .__grid
+            .__item(
+                v-for="(column, index) in items"
+                :key="index"
+            ) {{ column }}
 
 </template>
 
@@ -24,14 +29,29 @@ export type HomeProps = {
     },
 })
 export default class Home extends Vue {
-    counter = 0
+    counter = 3
 
     onClick() {
+        this.rows.push([`${this.counter}`, `task ${this.counter}`, 'ToDo'])
         this.counter++
         console.log('button click')
+    }
+
+    get items() {
+        return [...this.headers, ...this.rows.flat()]
+    }
+
+    rows = [
+        ['id', 'name', 'status'],
+        ['1', 'task', 'ToDo'],
+        ['2', 'task 2', 'ToDo'],
+    ]
+
+    get headers() {
+        return ['id', 'name', 'status']
     }
 }
 </script>
 
-<!-- <style lang="scss" src="./Home.critical.scss" /> -->
+<style lang="scss" src="./Home.critical.scss" />
 <!-- <style lang="scss" src="./Home.main.scss" /> -->

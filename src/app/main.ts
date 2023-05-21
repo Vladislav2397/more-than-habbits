@@ -7,6 +7,14 @@ import router from './providers/router'
 import store from './providers/store'
 import DeviceProvider from './providers/device'
 
+// @ts-ignore
+// import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
+// import 'vue-material/dist/vue-material.min.css'
+
+// Vue.use(MdButton)
+// Vue.use(MdContent)
+// Vue.use(MdTabs)
+
 Vue.config.productionTip = false
 
 Vue.mixin({
